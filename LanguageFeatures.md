@@ -1,5 +1,7 @@
 # Language Features
 
+This is the list of features that are turned on by default.
+
 * [Array Comprehension](LanguageFeatures#array-comprehension)
 * [Arrow Functions](LanguageFeatures#arrow-functions)
 * [Classes](LanguageFeatures#classes)
