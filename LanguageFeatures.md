@@ -36,7 +36,9 @@ All these features are either part of the official ECMAScript Harmony [draft](ht
 
 ```js
 var array = [for (x of [0, 1, 2]) for (y of [0, 1, 2]) x + '' + y];
-// array = ['00', '01', '02', '10', '11', '12', '20', '21', '22']
+expect(array).to.be.eql([
+  '00', '01', '02', '10', '11', '12', '20', '21', '22'
+]);
 ````
 
 **Offical Draft:** [Array Comprehension](http://people.mozilla.org/~jorendorff/es6-draft.html#sec-array-comprehension)
@@ -164,7 +166,7 @@ Iterating with a for of loop looks like:
 
 ### Examples
 
-```js
+```javascript
 for (let element of [1, 2, 3]) {
   console.log(element);
 }
@@ -211,7 +213,7 @@ Lazy computed comprehensions.
 
 ### Examples
 
-```js
+```javascript
 function* range() {
   for (var i = 0; i < 5; i++) {
     yield i;
@@ -230,7 +232,8 @@ in an iterator).
 
 ### Examples
 
-```js
+```javascript
+// --deferred-functions
 // A binary tree class.
 function Tree(left, label, right) {
   this.left = left;
@@ -255,9 +258,11 @@ function make(array) {
 let tree = make([[['a'], 'b', ['c']], 'd', [['e'], 'f', ['g']]]);
 
 // Iterate over it
+var result = [];
 for (let node of inorder(tree)) {
-  console.log(node); // a, b, c, d, ...
+  result.push(node); // a, b, c, d, ...
 }
+expect(result).to.be.eql(['a', 'b', 'c', 'd', 'e', 'f', 'g']);
 ```
 
 A generator function needs to be annotated as `function*` instead of just `function`.
@@ -272,14 +277,14 @@ specific exported names from those modules, and keep these names separate.
 
 ### Examples
 
-```js
+```javascript
 // Profile.js
 export var firstName = 'David';
 export var lastName = 'Belle';
 export var year = 1973;
 ```
 
-```js
+```javascript
 // ProfileView.js
 import {firstName, lastName, year} from './Profile';
 
@@ -295,7 +300,7 @@ In a Web page you can use `script` tags with `type="module"`:
 <script type="module" src="ProfileView.js"></script>
 ```
 and the `WebPageTranscoder`:
-```js
+```javascript
  new traceur.WebPageTranscoder(document.location.href).run(function() {
     // things you want to do with the modules.
   });
@@ -365,11 +370,15 @@ an object literal.
 
 ```js
 function getPoint() {
-  var x = ...;
-  var y = ...;
-  ...
+  var x = 1;
+  var y = 10;
+
   return {x, y};
 }
+expect(getPoint()).to.be.eql({
+  x: 1,
+  y: 10
+});
 ```
 
 **Offical Draft:** [Object Initializer Shorthand](http://people.mozilla.org/~jorendorff/es6-draft.html#sec-object-initialiser)
@@ -436,7 +445,7 @@ var greeting = `hello ${name}`;
 
 Currently we have a version of Promises which needs to be documented better here.
 
-```js
+```javascript
 function awaitTimeout(ms) {
   return new Promise((resolve) => {
     setTimeout(resolve, ms);
@@ -456,7 +465,7 @@ Deferred functions allow you to write asynchronous non-blocking code without wri
 callback functions, which don't compose well. With deferred functions, you can use
 JavaScript control flow constructs that you're used to, inline with the rest of your code.
 
-```js
+```javascript
 function deferredAnimate(element) {
     for (var i = 0; i < 100; ++i) {
         element.style.left = i;
@@ -478,7 +487,8 @@ ensures your variables don't leak out of the scope they're defined:
 
 ### Examples
 
-```js
+```javascript
+// --block-binding
 {
   const tmp = a;
   a = b;
@@ -489,7 +499,8 @@ alert(tmp); // error: 'tmp' is not defined.
 
 It's also useful for capturing variables in a loop:
 
-```js
+```javascript
+// --block-binding
 let funcs = [];
 for (let i of [4,5,6]) {
   funcs.push(function() { return i; });
@@ -503,6 +514,7 @@ for (var func of funcs) {
 ### Examples
 
 ```js
+// --symbols
 var s = Symbol();
 var object = {};
 object[s] = 42;
@@ -512,7 +524,7 @@ assert.equal(42, object[s]);
 ## Deferred Functions
 ### Examples
 
-```js
+```javascript
 function asyncValue(value) {
   if (true)
     return value;
@@ -547,7 +559,8 @@ function asyncTimeout(ms) {
 ## Annotations
 ### Examples
 
-```js
+```javascript
+// --annotations
 import {Anno} from './resources/setup';
 
 @Anno
