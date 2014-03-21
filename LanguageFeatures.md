@@ -317,27 +317,20 @@ See for example, [repl.html](https://github.com/google/traceur-compiler/blob/mas
 ### Examples
 
 ```js
-assert.equal(0, 0b0);
-assert.equal(1, 0b1);
-assert.equal(3, 0b11);
-assert.equal(3, 0b011);
-assert.equal(0, 0B0);
-assert.equal(1, 0B1);
-assert.equal(3, 0B11);
-assert.equal(3, 0B011);
+var binary = [
+  0b0,
+  0b1,
+  0b11
+];
+// binary === [0, 1, 3]
 
-assert.equal(0, 0o0);
-assert.equal(1, 0o1);
-assert.equal(7, 0o7);
-assert.equal(8, 0o10);
-assert.equal(8, 0o010);
-assert.equal(63, 0o77);
-assert.equal(0, 0O0);
-assert.equal(1, 0O1);
-assert.equal(7, 0O7);
-assert.equal(8, 0O10);
-assert.equal(8, 0O010);
-assert.equal(63, 0O77);
+var octal = [
+  0o0,
+  0o1,
+  0o10,
+  0o77
+];
+// octal === [0, 1, 8, 63]
 ```
 
 **Offical Proposal:** [Numeric Literals](http://wiki.ecmascript.org/doku.php?id=proposals:numbers&s=numeric+literals)
