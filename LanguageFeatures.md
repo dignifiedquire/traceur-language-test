@@ -181,19 +181,28 @@ function iterateElements(array) {
       var index = 0;
       var current;
       return {
-        get current() {
-          return current;
-        },
-        moveNext: function() {
+        next: function() {
           if (index < array.length) {
             current = array[index++];
-            return true;
+            return {
+              value: current,
+              done: false
+            };
           }
-          return false;
+          return {
+            value: undefined,
+            done: true
+          }
         }
       };
     }
   };
+}
+// Usage:
+var g = iterateElements([1,2,3]);
+
+for (var a of g) {
+  console.log(a);
 }
 ```
 
