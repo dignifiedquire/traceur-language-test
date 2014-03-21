@@ -28,8 +28,7 @@ And these are only experimental and need to be turned on manually:
 * [Types](LanguageFeatures#types)
 * [Annotations](LanguageFeatures#annotations)
 
-All these features are [proposals](http://wiki.ecmascript.org/doku.php?id=harmony:proposals) for
-ECMAScript Harmony unless otherwise noted.
+All these features are either part of the official ECMAScript Harmony [draft](http://people.mozilla.org/~jorendorff/es6-draft.html) or [proposals](http://wiki.ecmascript.org/doku.php?id=harmony:proposals) unless otherwise noted.
 
 ## Array Comprehension
 
@@ -40,7 +39,7 @@ var array = [for (x of [0, 1, 2]) for (y of [0, 1, 2]) x + '' + y];
 // array = ['00', '01', '02', '10', '11', '12', '20', '21', '22']
 ````
 
-**Offical Proposal:** [Array Comprehension](http://wiki.ecmascript.org/doku.php?id=harmony:array_comprehensions)
+**Offical Draft:** [Array Comprehension](http://people.mozilla.org/~jorendorff/es6-draft.html#sec-array-comprehension)
 
 ## Arrow Functions
 
@@ -52,7 +51,7 @@ var square = (x) => {
 var square2 = x => x * x;
 ````
 
-**Offical Proposal:** [Arrow Functions](http://wiki.ecmascript.org/doku.php?id=harmony:arrow_function_syntax)
+**Offical Draft:** [Arrow Functions](http://people.mozilla.org/~jorendorff/es6-draft.html#sec-arrow-function-definitions)
 
 ## Classes
 
@@ -66,7 +65,7 @@ mutually compatible.
 
 ### Examples
 
-```js
+```s
 class Monster extends Character {
   constructor(x, y, name) {
     super(x, y);
@@ -102,7 +101,7 @@ document.body.appendChild(button);
 
 *Warning* This is currently not supported.
 
-**Offical Proposal:** [Classes](http://wiki.ecmascript.org/doku.php?id=strawman:maximally_minimal_classes)
+**Offical Draft:** [Classes](http://people.mozilla.org/~jorendorff/es6-draft.html#sec-class-definitions)
 
 ## Computed Property Names
 
@@ -130,7 +129,7 @@ function f(list, indexA = 0, indexB = list.length) {
 // f([1,2,3], 1) === [[1,2,3], 1, 3]
 // f([1,2,3], 1, 2) === [[1,2,3], 1, 2]
 ```
-**Offical Proposal:** [Default Parameters](http://wiki.ecmascript.org/doku.php?id=harmony:parameter_default_values)
+**Offical Draft:** [Default Parameters](http://people.mozilla.org/~jorendorff/es6-draft.html#sec-function-definitions)
 
 ## Destructuring Assignment
 Destructuring assignment is a nice way to assign or initialize several variables at once.
@@ -154,13 +153,13 @@ var {topLeft: {x: x1, y: y1}, bottomRight: {x: x2, y: y2}} = rect;
 alert(x + y); // 567
 alert([x1, y1, x2, y2].join(',')) // 1,2,3,4
 ```
-**Offical Proposal:** [Destructuring Assignment](http://wiki.ecmascript.org/doku.php?id=harmony:destructuring)
+**Offical Draft:** [Destructuring Assignment](http://people.mozilla.org/~jorendorff/es6-draft.html#sec-destructuring-assignment)
 
 ## Iterators and For Of
 
 [Iterators](http://en.wikipedia.org/wiki/Iterator) are objects that can traverse a container.
 It's a useful way to make a class work inside a for of loop. The interface is similar
-to the [iterators](http://wiki.ecmascript.org/doku.php?id=harmony:iterators) proposal.
+to the [iterators-interface](http://people.mozilla.org/~jorendorff/es6-draft.html#sec-iterator-interface).
 Iterating with a for of loop looks like:
 
 ### Examples
@@ -213,7 +212,7 @@ function* range() {
 var iter = (for (x of [0, 1, 2, 3, 4]) x);
 ```
 
-**Offical Proposal:** [Generator Expressions](http://wiki.ecmascript.org/doku.php?id=harmony:generator_expressions)
+**Offical Draft:** [Generator Comprehension](http://people.mozilla.org/~jorendorff/es6-draft.html#sec-generator-comprehensions)
 
 ## Generators
 Generators make it easy to create iterators. Instead of tracking state yourself
@@ -254,7 +253,7 @@ for (let node of inorder(tree)) {
 
 A generator function needs to be annotated as `function*` instead of just `function`.
 
-**Offical Proposal:** [Generators](http://wiki.ecmascript.org/doku.php?id=harmony:generators)
+**Offical Draft:** [Generators](http://people.mozilla.org/~jorendorff/es6-draft.html#sec-generator-function-definitions)
 
 ## Modules
 [Modules](https://github.com/jorendorff/js-loaders/tree/master/specs) are mostly implemented,
@@ -333,7 +332,7 @@ var octal = [
 // octal === [0, 1, 8, 63]
 ```
 
-**Offical Proposal:** [Numeric Literals](http://wiki.ecmascript.org/doku.php?id=proposals:numbers&s=numeric+literals)
+**Offical Draft:** [Numeric Literals](http://people.mozilla.org/~jorendorff/es6-draft.html#sec-additional-syntax-numeric-literals)
 
 ## Property Method Assignment
 Did you ever end up staring at code looking like this wondering where the syntax error was?
@@ -347,12 +346,11 @@ var object = {
 };
 ```
 
-This [proposal](http://wiki.ecmascript.org/doku.php?id=harmony:concise_object_literal_extensions#methods)
-makes this a valid way to define methods on objects.
+**Offical Draft:** [Object Initializer Shorthand](http://people.mozilla.org/~jorendorff/es6-draft.html#sec-object-initialiser)
 
 ## Object Initializer Shorthand
-This [proposal](http://wiki.ecmascript.org/doku.php?id=strawman:object_initialiser_shorthand) allows
-you to skip repeating yourself when the property name and property value are the same in an object literal.
+This allows you to skip repeating yourself when the property name and property value are the same in
+an object literal.
 
 ### Examples
 
@@ -365,7 +363,7 @@ function getPoint() {
 }
 ```
 
-**Offical Proposal:** [Object Initializer Shorthand](http://wiki.ecmascript.org/doku.php?id=strawman:object_initialiser_shorthand)
+**Offical Draft:** [Object Initializer Shorthand](http://people.mozilla.org/~jorendorff/es6-draft.html#sec-object-initialiser)
 
 ## Rest Parameters
 Rest parameters allows your functions to have variable number of arguments without using the `arguments` object.
@@ -381,7 +379,7 @@ function push(array, ...items) {
 }
 ```
 
-**Offical Proposal:** [Rest Parameters](http://wiki.ecmascript.org/doku.php?id=harmony:rest_parameters)
+**Offical Draft:** [Rest Parameters](http://people.mozilla.org/~jorendorff/es6-draft.html#sec-function-definitions)
 
 ## Spread
 The spread operator is like the reverse of [rest parameters](#Rest_Parameters). It allows you to
@@ -411,7 +409,7 @@ var c = [6, 7];
 var d = [0, ...a, ...b, 5, ...c];
 ```
 
-**Offical Proposal:** [Spread Operator](http://wiki.ecmascript.org/doku.php?id=harmony:spread)
+**Offical Draft:** [Spread Operator](http://people.mozilla.org/~jorendorff/es6-draft.html#sec-array-literal)
 
 ## Template Literals
 
@@ -423,7 +421,7 @@ var greeting = `hello ${name}`;
 // greeting === 'hello world'
 ```
 
-**Offical Proposal:** [Quasis](http://wiki.ecmascript.org/doku.php?id=harmony:quasis)
+**Offical Draft:** [Template Literals](http://people.mozilla.org/~jorendorff/es6-draft.html#sec-template-literals)
 
 ## Promises
 
@@ -445,10 +443,9 @@ function awaitOutput() {
 awaitOutput();
 ```
 
-[Deferred functions](http://wiki.ecmascript.org/doku.php?id=strawman:deferred_functions)
-allow you to write asynchronous non-blocking code without writing callback functions, which
-don't compose well. With deferred functions, you can use JavaScript control flow constructs
-that you're used to, inline with the rest of your code.
+Deferred functions allow you to write asynchronous non-blocking code without writing
+callback functions, which don't compose well. With deferred functions, you can use
+JavaScript control flow constructs that you're used to, inline with the rest of your code.
 
 ```js
 function deferredAnimate(element) {
@@ -464,7 +461,7 @@ deferredAnimate(document.getElementById('box'));
 Deferred functions use await expressions to suspend execution and return an object that
 represents the continuation of the function.
 
-**Offical Proposal:** [Promises](http://wiki.ecmascript.org/doku.php?id=strawman:promises)
+**Offical Draft:** [Promises](http://people.mozilla.org/~jorendorff/es6-draft.html#sec-promise-objects)
 
 ## Block Scoped Binding
 Block scoped bindings provide scopes other than the function and top level scope. This
@@ -492,7 +489,6 @@ for (var func of funcs) {
   console.log(func()); // 4, 5, 6
 }
 ```
-**Offical Proposal:** [Block Scoped Bindings](http://wiki.ecmascript.org/doku.php?id=harmony:block_scoped_bindings)
 
 ## Symbols
 ### Examples
@@ -532,12 +528,12 @@ function asyncTimeout(ms) {
 })();
 ```
 
-**Offical Proposal:** [Deferred Functions](http://wiki.ecmascript.org/doku.php?id=strawman:deferred_functions)
+**Offical Strawman:** [Deferred Functions](http://wiki.ecmascript.org/doku.php?id=strawman:deferred_functions)
 
 ## Types
 ### Examples
 
-**Offical Proposal:** [Types](http://wiki.ecmascript.org/doku.php?id=strawman:types&s=types)
+**Offical Strawman:** [Types](http://wiki.ecmascript.org/doku.php?id=strawman:types&s=types)
 
 ## Annotations
 ### Examples
