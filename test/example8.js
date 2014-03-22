@@ -1,16 +1,10 @@
 var expect = require("chai").expect;
 describe("example8.js", function(){
   it("works", function() {
-function getLoader() {
-  var LoaderHooks = traceur.modules.LoaderHooks;
-  var loaderHooks = new LoaderHooks(new traceur.util.ErrorReporter(), url);
-  return new traceur.modules.CodeLoader(loaderHooks);
-}
-getLoader().import('../src/traceur.js', function(mod) {
-  console.log('DONE');
-}, function(error) {
-  console.error(error);
-});
+var binary = [0, 1, 3];
+expect(binary).to.be.eql([0, 1, 3]);
+var octal = [0, 1, 8, 63];
+expect(octal).to.be.eql([0, 1, 8, 63]);
 
   });
 });

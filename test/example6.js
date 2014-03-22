@@ -25,8 +25,8 @@ var $__0 = rect,
     $__2 = $__0.bottomRight,
     x2 = $__2.x,
     y2 = $__2.y;
-alert(x + y);
-alert([x1, y1, x2, y2].join(','));
+expect(x + y).to.be.eql(567);
+expect([x1, y1, x2, y2].join(',')).to.be.eql('1,2,3,4');
 
   });
 });

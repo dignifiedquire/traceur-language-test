@@ -27,13 +27,15 @@ function iterateElements(array) {
   }), $__0);
 }
 var g = iterateElements([1, 2, 3]);
+var res = [];
 for (var $__1 = g[Symbol.iterator](),
     $__2; !($__2 = $__1.next()).done; ) {
   var a = $__2.value;
   {
-    console.log(a);
+    res.push(a);
   }
 }
+expect(res).to.be.eql([1, 2, 3]);
 
   });
 });

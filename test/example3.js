@@ -9,6 +9,7 @@ var obj = ($__0 = {}, Object.defineProperty($__0, x, {
   enumerable: true,
   writable: true
 }), $__0);
+expect(obj[0]).to.be.eql('hello');
 
   });
 });

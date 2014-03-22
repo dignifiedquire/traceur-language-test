@@ -1,12 +1,18 @@
 var expect = require("chai").expect;
 describe("example10.js", function(){
   it("works", function() {
-var object = {
-  value: 42,
-  toString: function() {
-    return this.value;
-  }
-};
+function getPoint() {
+  var x = 1;
+  var y = 10;
+  return {
+    x: x,
+    y: y
+  };
+}
+expect(getPoint()).to.be.eql({
+  x: 1,
+  y: 10
+});
 
   });
 });

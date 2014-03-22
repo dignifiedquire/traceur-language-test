@@ -1,18 +1,17 @@
 var expect = require("chai").expect;
 describe("example11.js", function(){
   it("works", function() {
-function getPoint() {
-  var x = 1;
-  var y = 10;
-  return {
-    x: x,
-    y: y
-  };
+function push(array) {
+  for (var items = [],
+      $__0 = 1; $__0 < arguments.length; $__0++)
+    items[$__0 - 1] = arguments[$__0];
+  items.forEach(function(item) {
+    array.push(item);
+  });
 }
-expect(getPoint()).to.be.eql({
-  x: 1,
-  y: 10
-});
+var res = [];
+push(res, 1, 2, 3);
+expect(res).to.be.eql([1, 2, 3]);
 
   });
 });

@@ -51,6 +51,8 @@ var square = (x) => {
   return x * x;
 }
 var square2 = x => x * x;
+expect(square(4)).to.be.eql(16);
+expect(square2(4)).to.be.eql(16);
 ````
 
 **Offical Draft:** [Arrow Functions](http://people.mozilla.org/~jorendorff/es6-draft.html#sec-arrow-function-definitions)
@@ -67,7 +69,13 @@ mutually compatible.
 
 ### Examples
 
-```s
+```js
+class Character {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+  }
+}
 class Monster extends Character {
   constructor(x, y, name) {
     super(x, y);
@@ -86,11 +94,16 @@ class Monster extends Character {
     this.health_ = value;
   }
 }
+var myMonster = new Monster(5,1, 'arrrg');
+expect(myMonster.health).to.be.eql(100);
+expect(myMonster.isAlive).to.be.eql(true);
+expect(myMonster.x).to.be.eql(5);
+expect(myMonster.name).to.be.eql('arrrg');
 ```
 
 Here's an example of subclassing an HTML button:
 
-```js
+```javascript
 class CustomButton extends HTMLButtonElement {
   constructor() {
     this.value = 'Custom Button';
@@ -114,7 +127,7 @@ var x = 0;
 var obj = {
   [x]: 'hello'
 };
-// obj[0] === 'hello'
+expect(obj[0]).to.be.eql('hello');
 ```
 
 ## Default Parameters
@@ -127,9 +140,9 @@ or check for `undefined`.
 function f(list, indexA = 0, indexB = list.length) {
   return [list, indexA, indexB];
 }
-// f([1,2,3]) === [[1,2,3], 0, 3]
-// f([1,2,3], 1) === [[1,2,3], 1, 3]
-// f([1,2,3], 1, 2) === [[1,2,3], 1, 2]
+expect(f([1,2,3])).to.be.eql([[1,2,3], 0, 3]);
+expect(f([1,2,3], 1)).to.be.eql([[1,2,3], 1, 3]);
+expect(f([1,2,3], 1, 2)).to.be.eql([[1,2,3], 1, 2]);
 ```
 **Offical Draft:** [Default Parameters](http://people.mozilla.org/~jorendorff/es6-draft.html#sec-function-definitions)
 
@@ -140,7 +153,7 @@ Destructuring assignment is a nice way to assign or initialize several variables
 
 ```js
 var [a, [b], c, d] = ['hello', [', ', 'junk'], ['world']];
-alert(a + b + c); // hello, world
+expect(a + b + c).to.be.eql('hello, world');
 ```
 
 It can also destructure objects:
@@ -152,8 +165,8 @@ var rect = {topLeft: {x: 1, y: 2}, bottomRight: {x: 3, y: 4}};
 var {x, y} = pt; // unpack the point
 var {topLeft: {x: x1, y: y1}, bottomRight: {x: x2, y: y2}} = rect;
 
-alert(x + y); // 567
-alert([x1, y1, x2, y2].join(',')) // 1,2,3,4
+expect(x + y).to.be.eql(567);
+expect([x1, y1, x2, y2].join(',')).to.be.eql('1,2,3,4');
 ```
 **Offical Draft:** [Destructuring Assignment](http://people.mozilla.org/~jorendorff/es6-draft.html#sec-destructuring-assignment)
 
@@ -167,9 +180,11 @@ Iterating with a for of loop looks like:
 ### Examples
 
 ```javascript
+var res = [];
 for (let element of [1, 2, 3]) {
-  console.log(element);
+  res.push(element * element);
 }
+expect(res).to.be.eql([1, 4, 9]);
 ```
 
 You can also create your own iterable objects. Normally this is done via the `yield`
@@ -203,9 +218,11 @@ function iterateElements(array) {
 // Usage:
 var g = iterateElements([1,2,3]);
 
+var res = [];
 for (var a of g) {
-  console.log(a);
+  res.push(a);
 }
+expect(res).to.be.eql([1, 2, 3]);
 ```
 
 ## Generator Comprehension
@@ -305,14 +322,14 @@ and the `WebPageTranscoder`:
     // things you want to do with the modules.
   });
 ```
-See for example, [runner.html](https://github.com/google/traceur-compiler/blob/master/test/runner.html#L50).
+See for example, [runner.html](https://github.com/google/traceur-compiler/blob/master/test/runner.html#L37).
 
 On the traceur command line you can load them with `Loader.import`:
-```js
+```javascript
     function getLoader() {
-      var LoaderHooks = traceur.modules.LoaderHooks;
-      var loaderHooks = new LoaderHooks(new traceur.util.ErrorReporter(), url);
-      return new traceur.modules.CodeLoader(loaderHooks);
+      var LoaderHooks = traceur.runtime.LoaderHooks;
+      var loaderHooks = new LoaderHooks(new traceur.util.ErrorReporter(), './');
+      return new traceur.runtime.TraceurLoader(loaderHooks);
     }
     getLoader().import('../src/traceur.js',
         function(mod) {
@@ -323,7 +340,7 @@ On the traceur command line you can load them with `Loader.import`:
         }
     );
 ```
-See for example, [repl.html](https://github.com/google/traceur-compiler/blob/master/demo/repl.html#L162).
+See for example, [test-utils.js](https://github.com/google/traceur-compiler/blob/57e274ce9edb3cd92d4a716e2ceaf014b972dea5/test/test-utils.js#L121)
 
 ## Numeric Literals
 
@@ -335,7 +352,7 @@ var binary = [
   0b1,
   0b11
 ];
-// binary === [0, 1, 3]
+expect(binary).to.be.eql([0, 1, 3]);
 
 var octal = [
   0o0,
@@ -343,7 +360,7 @@ var octal = [
   0o10,
   0o77
 ];
-// octal === [0, 1, 8, 63]
+expect(octal).to.be.eql([0, 1, 8, 63]);
 ```
 
 **Offical Draft:** [Numeric Literals](http://people.mozilla.org/~jorendorff/es6-draft.html#sec-additional-syntax-numeric-literals)
@@ -358,6 +375,7 @@ var object = {
     return this.value;
   }
 };
+expect(object.toString()).to.be.eql(42);
 ```
 
 **Offical Draft:** [Object Initializer Shorthand](http://people.mozilla.org/~jorendorff/es6-draft.html#sec-object-initialiser)
@@ -395,6 +413,9 @@ function push(array, ...items) {
     array.push(item);
   });
 }
+var res = [];
+push(res, 1, 2, 3);
+expect(res).to.be.eql([1, 2, 3]);
 ```
 
 **Offical Draft:** [Rest Parameters](http://people.mozilla.org/~jorendorff/es6-draft.html#sec-function-definitions)
@@ -415,7 +436,7 @@ function add(x, y) {
 }
 
 var numbers = [4, 38];
-add(...numbers);  // 42
+expect(add(...numbers)).to.be.eql(42);
 ```
 
 The spread operator also works in array literals which allows you to combine multiple arrays more easily.
@@ -425,6 +446,7 @@ var a = [1];
 var b = [2, 3, 4];
 var c = [6, 7];
 var d = [0, ...a, ...b, 5, ...c];
+expect(d).to.be.eql([0, 1, 2, 3, 4, 5, 6, 7]);
 ```
 
 **Offical Draft:** [Spread Operator](http://people.mozilla.org/~jorendorff/es6-draft.html#sec-array-literal)
@@ -436,7 +458,7 @@ var d = [0, ...a, ...b, 5, ...c];
 ```js
 var name = 'world';
 var greeting = `hello ${name}`;
-// greeting === 'hello world'
+expect(greeting).to.be.eql('hello world');
 ```
 
 **Offical Draft:** [Template Literals](http://people.mozilla.org/~jorendorff/es6-draft.html#sec-template-literals)
@@ -518,7 +540,7 @@ for (var func of funcs) {
 var s = Symbol();
 var object = {};
 object[s] = 42;
-assert.equal(42, object[s]);
+expect(object[s]).to.be.eql(42);
 ```
 
 ## Deferred Functions

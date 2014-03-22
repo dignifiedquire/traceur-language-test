@@ -7,6 +7,8 @@ var square = (function(x) {
 var square2 = (function(x) {
   return x * x;
 });
+expect(square(4)).to.be.eql(16);
+expect(square2(4)).to.be.eql(16);
 
   });
 });

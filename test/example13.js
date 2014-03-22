@@ -1,18 +1,11 @@
 var expect = require("chai").expect;
 describe("example13.js", function(){
   it("works", function() {
-function push(array) {
-  var $__1;
-  for (var items = [],
-      $__0 = 1; $__0 < arguments.length; $__0++)
-    items[$__0 - 1] = arguments[$__0];
-  ($__1 = array).push.apply($__1, $traceurRuntime.toObject(items));
-}
-function add(x, y) {
-  return x + y;
-}
-var numbers = [4, 38];
-add.apply(null, $traceurRuntime.toObject(numbers));
+var a = [1];
+var b = [2, 3, 4];
+var c = [6, 7];
+var d = $traceurRuntime.spread([0], a, b, [5], c);
+expect(d).to.be.eql([0, 1, 2, 3, 4, 5, 6, 7]);
 
   });
 });

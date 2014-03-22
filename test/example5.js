@@ -6,7 +6,7 @@ var $__0 = ['hello', [', ', 'junk'], ['world']],
     b = $__0[1][0],
     c = $__0[2],
     d = $__0[3];
-alert(a + b + c);
+expect(a + b + c).to.be.eql('hello, world');
 
   });
 });
