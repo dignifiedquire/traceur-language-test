@@ -41,7 +41,7 @@ expect(array).to.be.eql([
 ]);
 ````
 
-**Offical Draft:** [Array Comprehension](http://people.mozilla.org/~jorendorff/es6-draft.html#sec-array-comprehension)
+**ES6 Spec:** [Array Comprehension](http://people.mozilla.org/~jorendorff/es6-draft.html#sec-array-comprehension)
 
 ## Arrow Functions
 
@@ -55,7 +55,7 @@ expect(square(4)).to.be.eql(16);
 expect(square2(4)).to.be.eql(16);
 ````
 
-**Offical Draft:** [Arrow Functions](http://people.mozilla.org/~jorendorff/es6-draft.html#sec-arrow-function-definitions)
+**ES6 Spec:** [Arrow Functions](http://people.mozilla.org/~jorendorff/es6-draft.html#sec-arrow-function-definitions)
 
 ## Classes
 
@@ -116,7 +116,7 @@ document.body.appendChild(button);
 
 *Warning* This is currently not supported.
 
-**Offical Draft:** [Classes](http://people.mozilla.org/~jorendorff/es6-draft.html#sec-class-definitions)
+**ES6 Spec:** [Classes](http://people.mozilla.org/~jorendorff/es6-draft.html#sec-class-definitions)
 
 ## Computed Property Names
 
@@ -144,7 +144,7 @@ expect(f([1,2,3])).to.be.eql([[1,2,3], 0, 3]);
 expect(f([1,2,3], 1)).to.be.eql([[1,2,3], 1, 3]);
 expect(f([1,2,3], 1, 2)).to.be.eql([[1,2,3], 1, 2]);
 ```
-**Offical Draft:** [Default Parameters](http://people.mozilla.org/~jorendorff/es6-draft.html#sec-function-definitions)
+**ES6 Spec:** [Default Parameters](http://people.mozilla.org/~jorendorff/es6-draft.html#sec-function-definitions)
 
 ## Destructuring Assignment
 Destructuring assignment is a nice way to assign or initialize several variables at once.
@@ -168,7 +168,7 @@ var {topLeft: {x: x1, y: y1}, bottomRight: {x: x2, y: y2}} = rect;
 expect(x + y).to.be.eql(567);
 expect([x1, y1, x2, y2].join(',')).to.be.eql('1,2,3,4');
 ```
-**Offical Draft:** [Destructuring Assignment](http://people.mozilla.org/~jorendorff/es6-draft.html#sec-destructuring-assignment)
+**ES6 Spec:** [Destructuring Assignment](http://people.mozilla.org/~jorendorff/es6-draft.html#sec-destructuring-assignment)
 
 ## Iterators and For Of
 
@@ -240,7 +240,7 @@ function* range() {
 var iter = (for (x of [0, 1, 2, 3, 4]) x);
 ```
 
-**Offical Draft:** [Generator Comprehension](http://people.mozilla.org/~jorendorff/es6-draft.html#sec-generator-comprehensions)
+**ES6 Spec:** [Generator Comprehension](http://people.mozilla.org/~jorendorff/es6-draft.html#sec-generator-comprehensions)
 
 ## Generators
 Generators make it easy to create iterators. Instead of tracking state yourself
@@ -284,7 +284,7 @@ expect(result).to.be.eql(['a', 'b', 'c', 'd', 'e', 'f', 'g']);
 
 A generator function needs to be annotated as `function*` instead of just `function`.
 
-**Offical Draft:** [Generators](http://people.mozilla.org/~jorendorff/es6-draft.html#sec-generator-function-definitions)
+**ES6 Spec:** [Generators](http://people.mozilla.org/~jorendorff/es6-draft.html#sec-generator-function-definitions)
 
 ## Modules
 [Modules](https://github.com/jorendorff/js-loaders/tree/master/specs) are mostly implemented,
@@ -363,7 +363,7 @@ var octal = [
 expect(octal).to.be.eql([0, 1, 8, 63]);
 ```
 
-**Offical Draft:** [Numeric Literals](http://people.mozilla.org/~jorendorff/es6-draft.html#sec-additional-syntax-numeric-literals)
+**ES6 Spec:** [Numeric Literals](http://people.mozilla.org/~jorendorff/es6-draft.html#sec-additional-syntax-numeric-literals)
 
 ## Property Method Assignment
 Did you ever end up staring at code looking like this wondering where the syntax error was?
@@ -378,7 +378,7 @@ var object = {
 expect(object.toString()).to.be.eql(42);
 ```
 
-**Offical Draft:** [Object Initializer Shorthand](http://people.mozilla.org/~jorendorff/es6-draft.html#sec-object-initialiser)
+**ES6 Spec:** [Object Initializer Shorthand](http://people.mozilla.org/~jorendorff/es6-draft.html#sec-object-initialiser)
 
 ## Object Initializer Shorthand
 This allows you to skip repeating yourself when the property name and property value are the same in
@@ -399,7 +399,7 @@ expect(getPoint()).to.be.eql({
 });
 ```
 
-**Offical Draft:** [Object Initializer Shorthand](http://people.mozilla.org/~jorendorff/es6-draft.html#sec-object-initialiser)
+**ES6 Spec:** [Object Initializer Shorthand](http://people.mozilla.org/~jorendorff/es6-draft.html#sec-object-initialiser)
 
 ## Rest Parameters
 Rest parameters allows your functions to have variable number of arguments without using the `arguments` object.
@@ -418,7 +418,7 @@ push(res, 1, 2, 3);
 expect(res).to.be.eql([1, 2, 3]);
 ```
 
-**Offical Draft:** [Rest Parameters](http://people.mozilla.org/~jorendorff/es6-draft.html#sec-function-definitions)
+**ES6 Spec:** [Rest Parameters](http://people.mozilla.org/~jorendorff/es6-draft.html#sec-function-definitions)
 
 ## Spread
 The spread operator is like the reverse of [rest parameters](#Rest_Parameters). It allows you to
@@ -449,7 +449,7 @@ var d = [0, ...a, ...b, 5, ...c];
 expect(d).to.be.eql([0, 1, 2, 3, 4, 5, 6, 7]);
 ```
 
-**Offical Draft:** [Spread Operator](http://people.mozilla.org/~jorendorff/es6-draft.html#sec-array-literal)
+**ES6 Spec:** [Spread Operator](http://people.mozilla.org/~jorendorff/es6-draft.html#sec-array-literal)
 
 ## Template Literals
 
@@ -461,7 +461,7 @@ var greeting = `hello ${name}`;
 expect(greeting).to.be.eql('hello world');
 ```
 
-**Offical Draft:** [Template Literals](http://people.mozilla.org/~jorendorff/es6-draft.html#sec-template-literals)
+**ES6 Spec:** [Template Literals](http://people.mozilla.org/~jorendorff/es6-draft.html#sec-template-literals)
 
 ## Promises
 
@@ -501,7 +501,7 @@ deferredAnimate(document.getElementById('box'));
 Deferred functions use await expressions to suspend execution and return an object that
 represents the continuation of the function.
 
-**Offical Draft:** [Promises](http://people.mozilla.org/~jorendorff/es6-draft.html#sec-promise-objects)
+**ES6 Spec:** [Promises](http://people.mozilla.org/~jorendorff/es6-draft.html#sec-promise-objects)
 
 ## Block Scoped Binding
 Block scoped bindings provide scopes other than the function and top level scope. This
