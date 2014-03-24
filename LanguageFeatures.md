@@ -126,7 +126,8 @@ document.body.appendChild(button);
 var x = 0;
 var obj = {
   // Ignore the ` they are just to make github markdown to behave
-  `[x`]: 'hello'
+  // `[x`]: 'hello'
+  [x]: 'hello'
 };
 expect(obj[0]).to.be.eql('hello');
 ```
@@ -180,9 +181,9 @@ Iterating with a for of loop looks like:
 
 ### Examples
 
-```javascript
+```js
 var res = [];
-for (let element of [1, 2, 3]) {
+for (var element of [1, 2, 3]) {
   res.push(element * element);
 }
 expect(res).to.be.eql([1, 4, 9]);
@@ -231,12 +232,12 @@ Lazy computed comprehensions.
 
 ### Examples
 
-```javascript
+```js
 var list = [1, 2, 3, 4];
 var res = (for (x of list) x);
 
 var acc = '';
-for (let x of res) {
+for (var x of res) {
   acc += x;
 }
 expect(acc).to.be.eql('1234');
