@@ -46,7 +46,9 @@ async.each(examples, function (example, cb) {
         if (err) return console.error(err);
         addTestCode(function (err) {
             if (err) return console.error(err);
-            runTests();
+            runTests(function () {
+                cleanup();
+            });
         });
     });
 });
@@ -84,8 +86,14 @@ function addTestCode(done) {
         });
     }, done);
 }
-function runTests() {
-    spawn('./node_modules/.bin/mocha', [
+function runTests(done) {
+    var child = spawn('./node_modules/.bin/mocha', [
         '--require', 'test-utils.js'
     ], {cwd: __dirname, stdio: 'inherit'});
+    child.on('close', done);
+}
+
+function cleanup() {
+    removeSync('test');
+    removeSync('tmp');
 }
