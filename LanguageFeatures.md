@@ -125,7 +125,8 @@ document.body.appendChild(button);
 ```js
 var x = 0;
 var obj = {
-  [x]: 'hello'
+  // Ignore the ` they are just to make github markdown to behave
+  `[x`]: 'hello'
 };
 expect(obj[0]).to.be.eql('hello');
 ```
@@ -231,13 +232,14 @@ Lazy computed comprehensions.
 ### Examples
 
 ```javascript
-function* range() {
-  for (var i = 0; i < 5; i++) {
-    yield i;
-  }
-}
+var list = [1, 2, 3, 4];
+var res = (for (x of list) x);
 
-var iter = (for (x of [0, 1, 2, 3, 4]) x);
+var acc = '';
+for (let x of res) {
+  acc += x;
+}
+expect(acc).to.be.eql('1234');
 ```
 
 **ES6 Spec:** [Generator Comprehension](http://people.mozilla.org/~jorendorff/es6-draft.html#sec-generator-comprehensions)
@@ -503,7 +505,7 @@ represents the continuation of the function.
 
 **ES6 Spec:** [Promises](http://people.mozilla.org/~jorendorff/es6-draft.html#sec-promise-objects)
 
-## Block Scoped Binding
+## Block Scoped Binding (Experimental)
 Block scoped bindings provide scopes other than the function and top level scope. This
 ensures your variables don't leak out of the scope they're defined:
 
@@ -532,7 +534,7 @@ for (var func of funcs) {
 }
 ```
 
-## Symbols
+## Symbols (Experimental)
 ### Examples
 
 ```js
@@ -543,7 +545,7 @@ object[s] = 42;
 expect(object[s]).to.be.eql(42);
 ```
 
-## Deferred Functions
+## Deferred Functions (Experimental)
 ### Examples
 
 ```javascript
@@ -573,12 +575,12 @@ function asyncTimeout(ms) {
 
 **Offical Strawman:** [Deferred Functions](http://wiki.ecmascript.org/doku.php?id=strawman:deferred_functions)
 
-## Types
+## Types (Experimental)
 ### Examples
 
 **Offical Strawman:** [Types](http://wiki.ecmascript.org/doku.php?id=strawman:types&s=types)
 
-## Annotations
+## Annotations (Experimental)
 ### Examples
 
 ```javascript
